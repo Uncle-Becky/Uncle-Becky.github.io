@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INDANEK</title>
+  <meta name="description" content="INDANEK hosts a private charting desk. We supply our own market data and broker connection. The workspace is internal and is not a public product.">
+  <meta property="og:title" content="INDANEK">
+  <meta property="og:description" content="A private charting desk. Our data, our broker, used inside INDANEK only.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://uncle-becky.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://uncle-becky.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #f5f5f5;
+      --muted: #a3a3a3;
+      --dim: #737373;
+      --line: #262626;
+      --red: #dc2626;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { color-scheme: dark; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.22em;
+    }
+
+    a:hover { color: var(--red); }
+
+    a:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    .plate {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 4.75rem 1fr;
+    }
+
+    .rail {
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rail span {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      letter-spacing: 0.28em;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--red);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      width: min(1080px, 100%);
+      padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 3px solid var(--red);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    header .where { color: var(--muted); letter-spacing: 0.14em; }
+
+    .hero {
+      padding: clamp(3rem, 10vh, 7.5rem) 0 clamp(2.5rem, 6vh, 4rem);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4.6rem, 14vw, 10.5rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 0.82;
+    }
+
+    .lede {
+      max-width: 16em;
+      margin: 1.75rem 0 0;
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .note {
+      max-width: 38rem;
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    ol {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    li {
+      padding: 1.35rem 1.5rem 0 0;
+    }
+
+    li + li {
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .idx {
+      color: var(--red);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+    }
+
+    h2 {
+      margin: 0.55rem 0 0.4rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    li p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 2.75rem;
+      color: var(--dim);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 800px) {
+      .plate { grid-template-columns: 1fr; }
+      .rail {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        min-height: 2.75rem;
+      }
+      .rail span {
+        writing-mode: horizontal-tb;
+        transform: none;
+      }
+      ol { grid-template-columns: 1fr; }
+      li, li + li {
+        padding: 1.25rem 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+      li:first-child { border-top: 0; padding-top: 1.25rem; }
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="plate">
+    <aside class="rail" aria-hidden="true"><span>INDANEK</span></aside>
+    <main>
+      <header>
+        <span>Private desk</span>
+        <span class="where">Darco, Texas</span>
+      </header>
+      <section class="hero">
+        <h1>INDANEK</h1>
+        <p class="lede">The charting desk we use ourselves.</p>
+        <p class="note">This site hosts the integration. Prices come from a market-data feed we operate, and orders go through a broker we connect. The desk stays inside INDANEK. It is not a public product, and it is not for sale.</p>
+      </section>
+      <ol>
+        <li>
+          <div class="idx">01</div>
+          <h2>Data</h2>
+          <p>We plug in our own market data. The chart does not run on a borrowed widget feed.</p>
+        </li>
+        <li>
+          <div class="idx">02</div>
+          <h2>Broker</h2>
+          <p>A broker connection we control sits behind the desk.</p>
+        </li>
+        <li>
+          <div class="idx">03</div>
+          <h2>Scope</h2>
+          <p>Internal research only. No public accounts and no subscription.</p>
+        </li>
+      </ol>
+      <footer>
+        <span>INDANEK</span>
+        <a href="https://github.com/Uncle-Becky">github.com/Uncle-Becky</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
